@@ -18,10 +18,11 @@ class RayTracer
 public:
     RayTracer(vec2 imageSize);
 
-    void render(std::vector<WorldObject> objects);
+    void render(std::vector<std::unique_ptr<WorldObject>> &objects, double fov);
 
 private:
     vec2 imageSize;
+    double imageAspectRatio;
 
     void saveToFile(std::string filename, std::vector<vec3> frameBuffer);
     void writeLogFile(double duration);

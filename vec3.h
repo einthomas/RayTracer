@@ -17,6 +17,7 @@ public:
     vec3 operator+(const vec3& a);
     vec3 operator-(const vec3& b);
     double operator*(const vec3& b);
+    vec3 vec3::operator*(const double d);
     vec3& operator+=(const vec3& b);
     vec3& operator-=(const vec3& b);
     friend std::ostream& operator<<(std::ostream& out, const vec3& a);

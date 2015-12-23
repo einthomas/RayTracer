@@ -2,18 +2,49 @@
 
 RayTracer::RayTracer(vec2 imageSize) {
     this->imageSize = imageSize;
+    imageAspectRatio = imageSize.x / imageSize.y;
 }
 
-void RayTracer::render(std::vector<WorldObject> objects) {
+void RayTracer::render(std::vector<std::unique_ptr<WorldObject>> &objects, double fov) {
+    std::cout << "rendering..." << std::endl;
     std::clock_t timer = std::clock();
     std::vector<vec3> frameBuffer;
 
     for (int y = 0; y < imageSize.y; y++) {
         for (int x = 0; x < imageSize.x; x++) {
+            vec3 pixel;
+
+            // normalize ray pos (-> NDC)
+            // add 0.5 so that the final ray passes through the middle of the pixel
+            pixel.x = (x + 0.5) / imageSize.x;
+            pixel.y = (y + 0.5) / imageSize.y;
+
+            // map from [0;1] to [-imageAspectRatio;imageAspectRatio]
+            pixel.x = 2.0 * pixel.x - 1.0;
+            pixel.x *= imageAspectRatio;
+            pixel.y = 1.0 - 2.0 * pixel.y;
+
+            double scale = tan(MyMath::degToRad(fov / 2.0));
+            pixel.x *= scale;
+            pixel.y *= scale;
+
+            vec3 rayOrig;
+            vec3 rayDir(pixel.x, pixel.y, -1.0);
+            rayDir -= rayOrig;
+            rayDir = rayDir.normalize();
+
+            Ray ray(rayOrig, rayDir);
+            frameBuffer.push_back(ray.cast(objects));
         }
     }
 
     double duration = (std::clock() - timer) / (double)CLOCKS_PER_SEC;
+    std::cout << "finished after " << duration << "s" << std::endl;
+
+    std::cout << "writing file..." << std::endl;
+    saveToFile("out", frameBuffer);
+
+    std::cout << "writing log..." << std::endl;
     writeLogFile(duration);
 }
 

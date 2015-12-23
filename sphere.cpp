@@ -31,7 +31,7 @@ Sphere::Sphere(vec3 pos, vec3 color, double radius) {
  * Therefore the quadratic formula can be used to solve the equation:
  * (-b +- sqrt(b^2 - 4ac)) / 2a
  */
-bool Sphere::intersects(Ray &ray, double &t) {
+bool Sphere::intersects(Ray ray, double &t) {
     vec3 l = ray.pos - pos;
     double a = ray.dir * ray.dir;
     double b = 2 * (ray.dir * l);

@@ -36,6 +36,10 @@ double vec3::operator*(const vec3& b) {
     return x * b.x + y * b.y + z * b.z;
 }
 
+vec3 vec3::operator*(const double d) {
+    return vec3(x * d, y * d, z * d);
+}
+
 vec3& vec3::operator+=(const vec3& a) {
     x += a.x;
     y += a.y;

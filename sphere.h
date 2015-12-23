@@ -11,7 +11,7 @@ public:
     double radius, radius2;
 
     Sphere(vec3 pos, vec3 color, double radius);
-    bool intersects(Ray& ray, double& t);
+    bool intersects(Ray ray, double& t);
 };
 
 #endif // SPHERE_H
