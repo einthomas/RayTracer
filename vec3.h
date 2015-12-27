@@ -12,12 +12,16 @@ public:
     vec3(double x, double y, double z);
     double length();
     vec3 normalize();
+    double dot(vec3 b);
+    vec3 reflect(vec3 normal);
+
 
     // Operators
-    vec3 operator+(const vec3& a);
-    vec3 operator-(const vec3& b);
-    double operator*(const vec3& b);
-    vec3 vec3::operator*(const double d);
+    friend vec3 operator+(const vec3& a, const vec3& b);
+    friend vec3 operator-(const vec3& a, const vec3& b);
+    friend vec3 operator*(const vec3& a, const vec3& b);
+    friend vec3 operator*(const vec3& a, const double d);
+    friend vec3 operator*(const double d, const vec3& a);
     vec3& operator+=(const vec3& b);
     vec3& operator-=(const vec3& b);
     friend std::ostream& operator<<(std::ostream& out, const vec3& a);

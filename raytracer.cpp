@@ -5,7 +5,8 @@ RayTracer::RayTracer(vec2 imageSize) {
     imageAspectRatio = imageSize.x / imageSize.y;
 }
 
-void RayTracer::render(std::vector<std::unique_ptr<WorldObject>> &objects, double fov) {
+void RayTracer::render(std::vector<std::unique_ptr<WorldObject>> &objects,
+                       std::vector<std::unique_ptr<Light>> &lights, double fov) {
     std::cout << "rendering..." << std::endl;
     std::clock_t timer = std::clock();
     std::vector<vec3> frameBuffer;
@@ -34,7 +35,7 @@ void RayTracer::render(std::vector<std::unique_ptr<WorldObject>> &objects, doubl
             rayDir = rayDir.normalize();
 
             Ray ray(rayOrig, rayDir);
-            frameBuffer.push_back(ray.cast(objects));
+            frameBuffer.push_back(ray.cast(objects, lights));
         }
     }
 

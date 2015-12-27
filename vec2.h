@@ -13,10 +13,13 @@ public:
     double length();
     vec2 normalize();
 
+
     // Operators
-    vec2 operator+(const vec2& a);
-    vec2 operator-(const vec2& b);
-    double operator*(const vec2& b);
+    friend vec2 operator+(const vec2& a, const vec2& b);
+    friend vec2 operator-(const vec2& a, const vec2& b);
+    friend vec2 operator*(const vec2& a, const vec2& b);
+    friend vec2 operator*(const vec2& a, const double d);
+    friend vec2 operator*(const double d, const vec2& a);
     vec2& operator+=(const vec2& b);
     vec2& operator-=(const vec2& b);
     friend std::ostream& operator<<(std::ostream& out, const vec2& a);

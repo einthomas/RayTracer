@@ -21,23 +21,34 @@ vec3 vec3::normalize() {
     return vec3(x / len, y / len, z / len);
 }
 
-
-
-// Operators
-vec3 vec3::operator+(const vec3& a) {
-    return vec3(x + a.x, y + a.y, z + a.z);
-}
-
-vec3 vec3::operator-(const vec3& b) {
-    return vec3(x - b.x, y - b.y, z - b.z);
-}
-
-double vec3::operator*(const vec3& b) {
+double vec3::dot(vec3 b) {
     return x * b.x + y * b.y + z * b.z;
 }
 
-vec3 vec3::operator*(const double d) {
-    return vec3(x * d, y * d, z * d);
+vec3 vec3::reflect(vec3 normal) {
+    return *this - 2.0 * normal.dot(*this) * normal;
+}
+
+
+// Operators
+vec3 operator+(const vec3& a, const vec3& b) {
+    return vec3(a.x + b.x, a.y + b.y, a.z + b.z);
+}
+
+vec3 operator-(const vec3& a, const vec3& b) {
+    return vec3(a.x - b.x, a.y - b.y, a.z - b.z);
+}
+
+vec3 operator*(const vec3& a, const vec3& b) {
+    return vec3(a.x * b.x, a.y * b.y, a.z * b.z);
+}
+
+vec3 operator*(const vec3& a, const double d) {
+    return vec3(a.x * d, a.y * d, a.z * d);
+}
+
+vec3 operator*(const double d, const vec3& a) {
+    return vec3(a.x * d, a.y * d, a.z * d);
 }
 
 vec3& vec3::operator+=(const vec3& a) {

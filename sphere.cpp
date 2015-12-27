@@ -1,10 +1,13 @@
 #include "sphere.h"
 
+Sphere::Sphere() { }
+
 Sphere::Sphere(vec3 pos, vec3 color, double radius) {
     this->pos = pos;
     this->color = color;
     this->radius = radius;
     radius2 = radius * radius;
+    visible = true;
 }
 
 /*
@@ -33,9 +36,9 @@ Sphere::Sphere(vec3 pos, vec3 color, double radius) {
  */
 bool Sphere::intersects(Ray ray, double &t) {
     vec3 l = ray.pos - pos;
-    double a = ray.dir * ray.dir;
-    double b = 2 * (ray.dir * l);
-    double c = l * l - radius2;
+    double a = ray.dir.dot(ray.dir);
+    double b = 2 * (ray.dir.dot(l));
+    double c = l.dot(l) - radius2;
 
     double t0, t1;
     if (!MyMath::solveQuadratic(a, b, c, t0, t1)) {

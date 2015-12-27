@@ -20,18 +20,25 @@ vec2 vec2::normalize() {
 }
 
 
-
 // Operators
-vec2 vec2::operator+(const vec2& a) {
-    return vec2(x + a.x, y + a.y);
+vec2 operator+(const vec2& a, const vec2& b) {
+    return vec2(a.x + b.x, a.y + b.y);
 }
 
-vec2 vec2::operator-(const vec2& b) {
-    return vec2(x - b.x, y - b.y);
+vec2 operator-(const vec2& a, const vec2& b) {
+    return vec2(a.x - b.x, a.y - b.y);
 }
 
-double vec2::operator*(const vec2& b) {
-    return x * b.x + y * b.y;
+vec2 operator*(const vec2& a, const vec2& b) {
+    return vec2(a.x * b.x, a.y * b.y);
+}
+
+vec2 operator*(const vec2& a, const double d) {
+    return vec2(a.x * d, a.y * d);
+}
+
+vec2 operator*(const double d, const vec2& a) {
+    return vec2(a.x * d, a.y * d);
 }
 
 vec2& vec2::operator+=(const vec2& a) {

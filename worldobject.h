@@ -2,7 +2,6 @@
 #define WORLDOBJECT_H
 
 #include "vec3.h"
-#include "ray.h"
 
 class Ray;
 
@@ -10,6 +9,7 @@ class WorldObject {
 public:
     vec3 pos;
     vec3 color;
+    bool visible;
 
     virtual bool intersects(Ray ray, double& t) = 0;
 };

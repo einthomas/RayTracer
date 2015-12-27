@@ -10,7 +10,9 @@ SOURCES += main.cpp \
     vec2.cpp \
     vec3.cpp \
     worldobject.cpp \
-    sphere.cpp
+    sphere.cpp \
+    globallight.cpp \
+    light.cpp
 
 HEADERS += \
     ray.h \
@@ -19,5 +21,7 @@ HEADERS += \
     vec2.h \
     vec3.h \
     worldobject.h \
-    sphere.h
+    sphere.h \
+    light.h \
+    globallight.h
 

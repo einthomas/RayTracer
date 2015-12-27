@@ -8,17 +8,19 @@
 #include "vec2.h"
 #include "vec3.h"
 #include "mymath.h"
-#include "ray.h"
 #include "worldobject.h"
+#include "ray.h"
 
 using namespace std;
+
+class Ray;
 
 class RayTracer
 {
 public:
     RayTracer(vec2 imageSize);
-
-    void render(std::vector<std::unique_ptr<WorldObject>> &objects, double fov);
+    void render(std::vector<std::unique_ptr<WorldObject>> &objects,
+                std::vector<std::unique_ptr<Light>> &lights, double fov);
 
 private:
     vec2 imageSize;
