@@ -20,8 +20,11 @@ public:
     friend vec3 operator+(const vec3& a, const vec3& b);
     friend vec3 operator-(const vec3& a, const vec3& b);
     friend vec3 operator*(const vec3& a, const vec3& b);
-    friend vec3 operator*(const vec3& a, const double d);
-    friend vec3 operator*(const double d, const vec3& a);
+    friend vec3 operator*(const vec3& a, const double c);
+    friend vec3 operator*(const double c, const vec3& a);
+    friend vec3 operator/(const vec3& a, const vec3& b);
+    friend vec3 operator/(const vec3& a, const double c);
+    friend vec3 operator/(const double c, const vec3& a);
     vec3& operator+=(const vec3& b);
     vec3& operator-=(const vec3& b);
     friend std::ostream& operator<<(std::ostream& out, const vec3& a);
