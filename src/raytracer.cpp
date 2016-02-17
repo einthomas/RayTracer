@@ -38,7 +38,7 @@ void RayTracer::render(std::vector<std::unique_ptr<WorldObject>> &objects,
 					rayDir = rayDir.normalize();
 
                     Ray ray(rayOrig, rayDir);
-                    aaData.push_back(ray.cast(objects, lights));
+                    aaData.push_back(ray.cast(objects, lights, 3));
 				}
 			}
 
