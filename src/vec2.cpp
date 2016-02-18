@@ -5,6 +5,11 @@ vec2::vec2() {
     y = 0.0;
 }
 
+vec2::vec2(double d) {
+	x = d;
+	y = d;
+}
+
 vec2::vec2(double x, double y) {
     this->x = x;
     this->y = y;

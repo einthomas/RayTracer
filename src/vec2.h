@@ -9,6 +9,7 @@ public:
     double x, y;
 
     vec2();
+	vec2(double d);
     vec2(double x, double y);
     double length();
     vec2 normalize();
