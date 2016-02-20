@@ -10,6 +10,7 @@
 #include "mymath.h"
 #include "worldobject.h"
 #include "ray.h"
+#include "camera.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ class RayTracer
 public:
     RayTracer(vec2 imageSize);
     void render(std::vector<std::unique_ptr<WorldObject>> &objects,
-                std::vector<std::unique_ptr<Light>> &lights, double fov);
+                std::vector<std::unique_ptr<Light>> &lights, Camera *camera);
 
 private:
     vec2 imageSize;

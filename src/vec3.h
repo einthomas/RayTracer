@@ -14,7 +14,8 @@ public:
     double length();
     vec3 normalize();
     double dot(vec3 b);
-    vec3 reflect(vec3 normal);
+	vec3 cross(vec3 b);
+	vec3 reflect(vec3 normal);
 
 
     // Operators

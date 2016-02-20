@@ -31,6 +31,10 @@ double vec3::dot(vec3 b) {
     return x * b.x + y * b.y + z * b.z;
 }
 
+vec3 vec3::cross(vec3 b) {
+	return vec3(y * b.z - z * b.y, z * b.x - x * b.z, x * b.y - y * b.x);
+}
+
 vec3 vec3::reflect(vec3 normal) {
     return *this - 2.0 * normal.dot(*this) * normal;
 }
