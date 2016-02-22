@@ -1,7 +1,8 @@
 #include "pinhole.h"
 
-Pinhole::Pinhole(vec3 eyePos, double fov)
-	: Camera(eyePos, fov) {
+Pinhole::Pinhole(vec3 eyePos, vec3 lookAt, float viewPlaneDistance, double fov)
+	: Camera(eyePos, lookAt, fov) {
+	this->viewPlaneDistance = viewPlaneDistance;
 }
 
 std::vector<vec3> Pinhole::render(std::vector<std::unique_ptr<WorldObject>> &objects,
@@ -28,9 +29,8 @@ std::vector<vec3> Pinhole::render(std::vector<std::unique_ptr<WorldObject>> &obj
 					pixel.x *= scale;
 					pixel.y *= scale;
 
-					vec3 rayOrig;
-					vec3 rayDir(pixel.x, pixel.y, -1.0);
-					rayDir -= rayOrig;
+					vec3 rayOrig = eyePos;
+					vec3 rayDir = pixel.x * this->xAxis + pixel.y * this->yAxis - viewPlaneDistance * this->zAxis;
 					rayDir = rayDir.normalize();
 
 					Ray ray(rayOrig, rayDir);

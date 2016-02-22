@@ -5,7 +5,7 @@
 
 class Orthographic : public Camera {
 public:
-	Orthographic(vec3 eyePos, double fov);
+	Orthographic(vec3 eyePos, vec3 lookAt, double fov);
 	std::vector<vec3> render(std::vector<std::unique_ptr<WorldObject>> &objects,
 							 std::vector<std::unique_ptr<Light>> &lights,
 							 vec2 imageSize, double imageAspectRatio, int aaDepth);

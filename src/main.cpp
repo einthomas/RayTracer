@@ -11,6 +11,7 @@
 #include "vec3.h"
 #include "orthographic.h"
 #include "pinhole.h"
+#include "mat4.h"
 
 int main() {
     std::vector<std::unique_ptr<WorldObject>> objects;
@@ -27,9 +28,8 @@ int main() {
 	lights.push_back(std::unique_ptr<Light>(new GlobalLight(vec3(-0.03292f, 4.4421f, -6.4661f), vec3(1.0, 1.0, 1.0))));
     //lights.push_back(std::unique_ptr<Light>(new GlobalLight(vec3(-6.0, 6.0, 0.0), vec3(1.0, 1.0, 1.0))));
 
-    RayTracer rayTracer(vec2(800, 400));
-    rayTracer.render(objects, lights, new Orthographic(vec3(), 20));
-	//rayTracer.render(objects, lights, new Pinhole(vec3(), 20));
+    RayTracer rayTracer(vec2(400, 200));
+	rayTracer.render(objects, lights, new Pinhole(vec3(), vec3(0.0f, 0.0f, -12.0f), 1.0f, 50.0f));
 
     return 0;
 }

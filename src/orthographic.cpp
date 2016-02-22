@@ -1,7 +1,7 @@
 #include "orthographic.h"
 
-Orthographic::Orthographic(vec3 eyePos, double fov)
-	: Camera(eyePos, fov) {
+Orthographic::Orthographic(vec3 eyePos, vec3 lookAt, double fov)
+	: Camera(eyePos, lookAt, fov) {
 }
 
 std::vector<vec3> Orthographic::render(std::vector<std::unique_ptr<WorldObject>> &objects,
