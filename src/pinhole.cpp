@@ -1,8 +1,15 @@
 #include "pinhole.h"
 
 Pinhole::Pinhole(vec3 eyePos, vec3 lookAt, float viewPlaneDistance, double fov)
-	: Camera(eyePos, lookAt, fov) {
+	: Camera(eyePos, lookAt, 0.0f) {
 	this->viewPlaneDistance = viewPlaneDistance;
+	this->fov = fov;
+}
+
+Pinhole::Pinhole(vec3 eyePos, vec3 lookAt, float viewPlaneDistance, double fov, double rollAngle)
+	: Camera(eyePos, lookAt, rollAngle) {
+	this->viewPlaneDistance = viewPlaneDistance;
+	this->fov = fov;
 }
 
 std::vector<vec3> Pinhole::render(std::vector<std::unique_ptr<WorldObject>> &objects,

@@ -29,7 +29,8 @@ int main() {
     //lights.push_back(std::unique_ptr<Light>(new GlobalLight(vec3(-6.0, 6.0, 0.0), vec3(1.0, 1.0, 1.0))));
 
     RayTracer rayTracer(vec2(400, 200));
-	rayTracer.render(objects, lights, new Pinhole(vec3(), vec3(0.0f, 0.0f, -12.0f), 1.0f, 50.0f));
+	rayTracer.render(objects, lights, new Pinhole(vec3(), vec3(-4.0, -1.6f, -12.0), 1.0f, 50.0f, MyMath::degToRad(90.0f)));
+	//rayTracer.render(objects, lights, new Pinhole(vec3(), vec3(0.0f, 0.0f, -12.0), 1.0f, 50.0f, 90.0f));
 
     return 0;
 }
